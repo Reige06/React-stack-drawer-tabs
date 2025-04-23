@@ -118,5 +118,48 @@ const homepage = StyleSheet.create({
       borderTopWidth: 1,
       borderTopColor: '#eee',
     },
+    inputRow: {
+      flexDirection: 'row',
+      margin: 10,
+    },
+    taskInput: {
+      flex: 1,
+      borderColor: 'gray',
+      borderWidth: 1,
+      padding: 10,
+      borderRadius: 5,
+    },
+    addButton: {
+      marginLeft: 10,
+      backgroundColor: '#4facfe',
+      padding: 10,
+      borderRadius: 5,
+    },
+    addButtonText: {
+      color: '#fff',
+    },
+    filterRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      marginBottom: 10,
+    },
+    filterText: {
+      fontWeight: 'normal',
+    },
+    activeFilterText: {
+      fontWeight: 'bold',
+    },
+    completedTask: {
+      textDecorationLine: 'line-through',
+    },
+    taskActions: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    deleteIcon: {
+      marginLeft: 10,
+    },
+    
+
   });
   export default homepage;

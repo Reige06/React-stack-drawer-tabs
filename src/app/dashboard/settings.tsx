@@ -1,9 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useTheme } from 'react-native-paper';
 
 const Settings = () => {
   const router = useRouter();
+  const { colors } = useTheme();
 
   const handleLogout = () => {
     Alert.alert(
@@ -23,8 +25,8 @@ const Settings = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Settings</Text>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <Text style={[styles.title, { color: colors.onBackground }]}>Settings</Text>
       <Button title="Log Out" onPress={handleLogout} color="#ff3b30" />
     </View>
   );
@@ -36,7 +38,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: '#f8f9fa',
   },
   title: {
     fontSize: 24,

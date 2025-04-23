@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 20,
     paddingVertical: 5,
-    backgroundColor: '#fff',
+    
   },
   footer: {
     marginTop: 15,
