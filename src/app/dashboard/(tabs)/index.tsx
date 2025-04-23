@@ -92,18 +92,18 @@ const Index: React.FC = () => {
   };
 
   const toggleComplete = async (id: string) => {
-    const task = tasks.find(t => t.id === id);
-    if (!task) return;
-    try {
-      await axios.patch (`${API_URL}/${id}`, {
-        description: task.title,
-        status: task.completed ? 'pending' : 'completed',
-      });
-      fetchTasks();
-    } catch (err) {
-      console.error('Failed to toggle status:', err);
-    }
-  };
+  const task = tasks.find(t => t.id === id);
+  if (!task) return;
+  try {
+    await axios.put(`${API_URL}/${id}/`, {
+      description: task.title,
+      status: task.completed ? 'pending' : 'completed',
+    });
+    fetchTasks();
+  } catch (err) {
+    console.error('Failed to toggle status:', err);
+  }
+};
 
   const filteredTasks = tasks.filter(task => {
     if (filter === 'completed') return task.completed;
