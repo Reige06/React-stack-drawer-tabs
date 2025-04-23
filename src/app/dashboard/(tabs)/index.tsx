@@ -95,7 +95,7 @@ const Index: React.FC = () => {
     const task = tasks.find(t => t.id === id);
     if (!task) return;
     try {
-      await axios.put(`${API_URL}/${id}`, {
+      await axios.patch (`${API_URL}/${id}`, {
         description: task.title,
         status: task.completed ? 'pending' : 'completed',
       });
