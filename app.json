@@ -13,7 +13,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./src/assets/4.webp",
         "backgroundColor": "#ffffff"
       },
       "package": "com.rayzh.todo"
