@@ -10,7 +10,7 @@ import {
 import homepage from '../../../styles/homepagestyle';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useTheme } from 'react-native-paper';
+import { useTheme, Checkbox } from 'react-native-paper';
 import axios from 'axios';
 
 type Task = {
@@ -95,7 +95,7 @@ const Index: React.FC = () => {
     const task = tasks.find(t => t.id === id);
     if (!task) return;
     try {
-      await axios.patch (`${API_URL}/${id}`, {
+      await axios.put(`${API_URL}/${id}`, {
         description: task.title,
         status: task.completed ? 'pending' : 'completed',
       });
@@ -156,8 +156,15 @@ const Index: React.FC = () => {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View
-            style={[homepage.taskCard, { backgroundColor: colors.surface }]}
-          >
+            style={[
+              homepage.taskCard,
+              {
+                backgroundColor: item.completed ? '#008000' : colors.surface,
+                borderColor: item.completed ? '#28a745' : colors.outline,
+                borderWidth: 1,
+              },
+            ]}
+            >
             <View style={homepage.taskDetails}>
               {editingId === item.id ? (
                 <TextInput
@@ -166,17 +173,24 @@ const Index: React.FC = () => {
                   style={[homepage.taskInput, { color: colors.onSurface }]}
                 />
               ) : (
-                <TouchableOpacity onPress={() => toggleComplete(item.id)}>
-                  <Text
-                    style={[
-                      homepage.taskName,
-                      item.completed && homepage.completedTask,
-                      { color: colors.onSurface },
-                    ]}
-                  >
-                    {item.title}
-                  </Text>
-                </TouchableOpacity>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <Checkbox
+                    status={item.completed ? 'checked' : 'unchecked'}
+                    onPress={() => toggleComplete(item.id)}
+                    color={colors.primary}
+                  />
+                  <TouchableOpacity onPress={() => toggleComplete(item.id)}>
+                    <Text
+                      style={[
+                        homepage.taskName,
+                        item.completed && homepage.completedTask,
+                        { color: colors.onSurface, marginLeft: 8 },
+                      ]}
+                    >
+                      {item.title}
+                    </Text>
+                  </TouchableOpacity>
+                </View>
               )}
             </View>
             <View style={homepage.taskActions}>

@@ -88,7 +88,7 @@ const homepage = StyleSheet.create({
     taskCard: {
       flexDirection: 'row',
       alignItems: 'center',
-      padding: 16,
+      padding: 10,
       marginHorizontal: 16,
       backgroundColor: 'white',
       borderRadius: 12,
@@ -97,6 +97,9 @@ const homepage = StyleSheet.create({
       shadowOpacity: 0.1,
       shadowRadius: 4,
       elevation: 2,
+      marginTop: 10,
+      paddingLeft: 1,
+      paddingRight: 14
     },
     taskDetails: { 
         flex: 1, 
